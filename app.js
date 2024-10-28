@@ -36,6 +36,7 @@ boxes.forEach((box)=>{
 
 const checkwinner= ()=>{
     count++;
+    let flag = false;
       for(let pattern of winpatterns){
         let pos1 =boxes[pattern[0]].innerText;
         let pos2 =boxes[pattern[1]].innerText;
@@ -46,7 +47,8 @@ const checkwinner= ()=>{
             disableboxes();
             document.querySelector(".winnertext").innerText=`Congratulations, Winner is ${pos1}`;
             console.log("winner");
-          
+            flag = true;
+          break;
         }
         else if(count==9){
             
@@ -54,6 +56,9 @@ const checkwinner= ()=>{
         }
       }
           }
+    if(!flag && count===9){
+        document.querySelector(".winnertext").innerText=`It's a tie game`;
+    }
 };
 
 /*if(flag){
